@@ -67,4 +67,21 @@ fn main(){
 
     let x = 5; //Alocado na memória stack.
     let z = true; //Alocado na memória stack.
+
+    /* Aula 05 - String - Textos e Caracteres */
+
+    "Rafa"; //String literal. Nesse código, o Rust irá converter para binário e armazenará essa string literal dentro do "code segment", que é uma parte da memória estática.
+
+    let nome = "Rafa"; //A variável "nome" recebe o tipo "&str". O tipo "&str" é o "string slice" ou "string reference". É uma referência para uma string que está armazenada em outro lugar da memória.
+
+    let mut s = String::new(); //Criando uma string vazia que pode ser modificada e será armazenada na "heap" pois o seu tamanho não é conhecido.
+    s.push('a'); //Adicionando um caractere na string.
+    s.push_str("b"); //Adicionando uma string na string.
+    println!("{}", s);
+
+    //Criando uma string do tipo String:
+
+    let s: String = "Rafa".to_string(); //Criando uma string do tipo String.
+
+    let nome2 = String::from("Rafa");
 }
