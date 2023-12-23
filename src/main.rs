@@ -28,4 +28,36 @@ fn main(){
 
 
     /* Aula 03 - Tipos Primitivos em Rustlang */
+
+    /* Primitivos Escalares (armazenam apenas um único valor) */
+
+    // let x = 5_u8;
+    // let y: u8 = x - 20; -> Um overflow será gerado, pois o valor de y será maior do que o range de um u8.
+
+    let numeroGrande = 199_456_899; // Melhorando a legibilidade.
+
+    let x: f64 = 42.1; //Um float em Rust.
+
+    let x = true; //Um booleano em Rust.
+
+    let letra = 'a'; //Um char em Rust.
+
+    /* Tipos Compostos (agrupar mais de um valor) */
+
+    //Tupla: A tupla possui um tamanho fixo.
+    let numbers: (i32, i32, f64) = (1, 2, 3.5);
+    println!("{:?}", numbers);
+    println!("{:#?}", numbers.2); //Acessando o índice 2 da tupla.
+
+    let (a, b, c) = numbers; //Desestruturando a tupla.
+
+    //Array: O array possui um tamanho fixo.
+
+    let array: [i32;4] = [1, 2, 3, 4];
+    println!("{:?}", array);
+    println!("{:#?}", array[2]); //Acessando o índice 2 do array.
+
+    //Slice:
+
+    println!("{:?}", &array[1..3]); //Acessando o índice 1 até o 3 do array.
 }
