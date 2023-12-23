@@ -1,3 +1,5 @@
+use std::io; //Importando a biblioteca de entrada e saída do Rust.
+
 fn main(){
 
     /* Aula 01 - Introdução */
@@ -61,12 +63,14 @@ fn main(){
 
     println!("{:?}", &array[1..3]); //Acessando o índice 1 até o 3 do array.
 
+
     /* Aula 04 - Memórias Static, Stack e Heap */
 
     static _Y: i32 = 5; //Alocado na memória estática.
 
     let x = 5; //Alocado na memória stack.
     let z = true; //Alocado na memória stack.
+
 
     /* Aula 05 - String - Textos e Caracteres */
 
@@ -84,4 +88,37 @@ fn main(){
     let s: String = "Rafa".to_string(); //Criando uma string do tipo String.
 
     let nome2 = String::from("Rafa");
+
+
+    /* Aula 06 - Respondendo Perguntas - Compilação Otimizada, Operações em String */
+
+    fn main2(){
+
+        let mut s = String::new();
+        println!("Digite um texto: ");
+
+        io::stdin()
+            .read_line(&mut s)
+            .expect("Falha ao ler o texto!");
+
+        println!("Você digitou: {}", s);
+        println!("Quantidade de caracteres {}", s.trim().len()); //O "trim" é para tirar o caractere representado pelo "Enter".
+        println!("Você digitou: {}", s.to_uppercase());
+        println!("Você digitou: {}", s.replace("n", "x"));
+
+        let nums: Vec<i32> = s.split(",")
+            .map(| c | c.trim().parse().expect("Erro!"))
+            .collect();
+
+        println!("Você digitou: {:?}", nums);
+
+        let result: i32 = nums.iter().sum();
+
+        println!("A soma dos números é: {}", result);
+
+    }
+
+    main2();
+
+    /* Aula 07 - Funções */
 }
