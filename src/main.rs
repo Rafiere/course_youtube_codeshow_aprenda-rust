@@ -121,4 +121,32 @@ fn main(){
     main2();
 
     /* Aula 07 - Funções */
+
+    fn say_hello(name: &str){
+        println!("Hello {name}");
+    }
+
+    say_hello("Rafa"); //Estamos chamando a função.
+
+    fn add_numbers(x: i32, y: i32) -> i32 {
+        // return x + y; //Estamos utilizando o "return". Ele é opcional, já que é uma expressão
+        // e, consequentemente, gera um valor, assim, a última expressão sempre será retornada.
+        x + y
+    }
+
+    fn main3(){
+
+        let input = "56 65 58 48 59 56 87 23";
+
+        let result: Vec<i32> = input
+            .split(' ')
+            .map(|s| s.parse::<i32>().unwrap()) //Estamos criando uma função anônima, ou seja, um closure.
+            .map(|n| n * 2)
+            .collect();
+
+        println!("Teste!");
+        println!("{:?}", result);
+    }
+
+    main3();
 }
