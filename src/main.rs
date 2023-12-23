@@ -60,4 +60,11 @@ fn main(){
     //Slice:
 
     println!("{:?}", &array[1..3]); //Acessando o índice 1 até o 3 do array.
+
+    /* Aula 04 - Memórias Static, Stack e Heap */
+
+    static _Y: i32 = 5; //Alocado na memória estática.
+
+    let x = 5; //Alocado na memória stack.
+    let z = true; //Alocado na memória stack.
 }
