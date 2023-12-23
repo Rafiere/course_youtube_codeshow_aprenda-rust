@@ -1,0 +1,1 @@
+Esse é o código do curso "Aprenda Rust", do canal "CodeShow".
