@@ -149,4 +149,64 @@ fn main(){
     }
 
     main3();
+
+
+    /* Aula 08 - Ownership e Borrowing */
+
+    fn main4(){
+
+        /* Tipos Copy: */
+
+        let a: i32 = 1; //São valores do tipo "copy", pois são valores que possuem um tamanho fixo. "i32", "f64" e etc. Tipos que não implementam o "trait" chamado "Copy" não são copiados.
+
+        // let b = a; //O "Rust" fará a cópias dos valores de "a" para "b", assim, eles são independentes.
+
+        //Para evitarmos a cópia, podemos, explicitamente, pedir por uma referência.
+
+        let b = &a; //Estamos criando uma referência para "a". Assim, "b" não é uma cópia de "a", mas sim uma referência para "a".
+
+        //Armazenando na heap:
+
+        let c = String::from("Teste"); //Estamos armazenando na "heap".
+
+        let d = c; //Estamos movendo a PROPRIEDADE, o ownership de "c" para "d", assim, "c" não é mais válido.
+
+        // println!("{}", c); //O "c" não é mais válido e o borrow checker não irá permitir a sua utilização.
+    }
+
+    main4();
+
+    fn say_hello2(name: String){
+        println!("Hello {name}");
+    }
+
+    fn say_goodbye2(name: String){
+        println!("Hello {name}");
+    }
+
+    fn main5(){
+
+        let name = "Rafa"; //&str - static
+        say_hello(name); //É um valor "copy". Estamos copiando esse texto para dentro da função.
+
+        //Usando a heap:
+
+        let name2 = String::from("Rafa"); //String - heap
+        say_hello2(name2); //Estamos movendo a propriedade de "name2" para o argumento da função "say_hello2". Assim, "name2" não é mais válido.
+        // say_goodbye2(name2); //O "name2" não é mais válido e o borrow checker não irá permitir a sua utilização.
+
+        //Como resolver o problema acima:
+
+        let name3 = String::from("Rafa");
+        // say_hello(name.clone()); //Estamos clonando o valor de "name3" e passando para a função "say_hello". Assim, "name3" continua válido.
+        // say_goodbye2(name3); //Estamos movendo a propriedade de "name3" para o argumento da função "say_goodbye2". Assim, "name3" não é mais válido.
+
+        //O "clone" é custoso, pois ele faz a alocação na memória heap e copia o valor para lá.
+
+        //Resolvendo sem o "clone":
+        let name4 = String::from("Rafa");
+        say_hello(&name4); //Estamos passando uma referência para a função "say_hello". Assim, "name4" continua válido.
+        say_goodbye2(name4); //Estamos movendo a propriedade de "name4" para o argumento da função "say_goodbye2". Assim, "name4" não é mais válido.
+
+    }
 }
